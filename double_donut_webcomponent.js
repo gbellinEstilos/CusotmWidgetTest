@@ -1,6 +1,6 @@
 (function () {
   let tmpl = document.createElement('template');
-  tmpl.innerHTML = `<div class="chart"></div>`;
+  tmpl.innerHTML = `<div id="chart"></div>`;
 
   customElements.define('com-sap-estilos-doubledonut', class HelloWorld extends HTMLElement {
 
@@ -112,7 +112,7 @@
       var color1 = d3.scale.category20();
       var color2 = d3.scale.category20c();
 
-      var svg = d3.select('.chart')
+      var svg = d3.select('#chart')
         .append('svg')
         .attr('width', width)
         .attr('height', height);
