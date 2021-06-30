@@ -10,7 +10,7 @@
       super();
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-      this._firstConnection = false;
+      this._firstUpdate = false;
       this._tagContainer;
       //this._tagType = "h1";
       //this._tagText = "Hello World";
@@ -18,8 +18,23 @@
 
     //Fired when the widget is added to the html DOM of the page
     connectedCallback() {
-      this._firstConnection = true;
-      this.draw();
+      var shadow = this.shadowRoot;
+      let LoadLibsAfterUpdate = async function (host) {
+        try {
+          await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
+        } catch (e) {
+          console.log(JSON.stringify(e));
+        } finally {
+          host.draw();
+        }
+      };
+
+      if (this._firstUpdate) {
+        LoadLibsAfterUpdate(this);
+        this._firstUpdate = false;
+      } else {
+        this.draw();
+      }
     }
 
     //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
@@ -35,7 +50,6 @@
     //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
     onCustomWidgetAfterUpdate(oChangedProperties) {
       var shadow = this.shadowRoot;
-
       let LoadLibsAfterUpdate = async function (host) {
         try {
           await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
