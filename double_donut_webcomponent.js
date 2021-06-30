@@ -1,7 +1,6 @@
 (function () {
   let tmpl = document.createElement('template');
   tmpl.innerHTML = `
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js" data-semver="3.4.6" data-require="d3@*"></script>
         `;
 
   customElements.define('com-sap-estilos-doubledonut', class HelloWorld extends HTMLElement {
@@ -35,8 +34,22 @@
 
     //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
     onCustomWidgetAfterUpdate(oChangedProperties) {
-      if (this._firstConnection) {
-        this.draw();
+      let LoadLibsAfterUpdate = async function (host) {
+        try {
+          await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
+        } catch (e) {
+          console.log(JSON.stringify(e));
+        } finally {
+          host.draw();
+        }
+      };
+      if (!(this._init || this._selectionEvent)) {
+        if (this._firstUpdate) {
+          LoadLibsAfterUpdate(this);
+          this._firstUpdate = false;
+        } else {
+          this.draw();
+        }
       }
     }
 
@@ -66,7 +79,7 @@
 
     draw() {
 
-       (function (d3) {
+      (function (d3) {
         'use strict';
 
         var dataset1 = [
@@ -132,7 +145,7 @@
             return color2(i);
           });
 
-      })(window.d3); 
+      })(window.d3);
 
       /*          if (this._tagContainer){
                       this._tagContainer.parentNode.removeChild(this._tagContainer);
