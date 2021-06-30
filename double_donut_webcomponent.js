@@ -112,7 +112,7 @@
       var color1 = d3.scale.category20();
       var color2 = d3.scale.category20c();
 
-      var svg = d3.select('#chart')
+      var svg = d3.select(this.shadowRoot.querySelector('#chart'))
         .append('svg')
         .attr('width', width)
         .attr('height', height);
