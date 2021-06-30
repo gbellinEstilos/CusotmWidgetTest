@@ -18,7 +18,7 @@
     //Fired when the widget is added to the html DOM of the page
     connectedCallback() {
       var shadow = this.shadowRoot;
-      let LoadLibsAfterUpdate = async function (host) {
+      let LoadLibs = async function (host) {
         try {
           await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
         } catch (e) {
@@ -27,7 +27,7 @@
           host.draw();
         }
       };
-      LoadLibsAfterUpdate(this);
+      LoadLibs(this);
       this._init = false;
     }
 
@@ -43,7 +43,7 @@
 
     //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
     onCustomWidgetAfterUpdate(oChangedProperties) {
-      var shadow = this.shadowRoot;
+/*       var shadow = this.shadowRoot;
       let LoadLibsAfterUpdate = async function (host) {
         try {
           await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
@@ -59,8 +59,7 @@
         this._firstUpdate = false;
       } else {
         this.draw();
-      }
-
+      } */
     }
 
     //When the custom widget is removed from the canvas or the analytic application is closed
