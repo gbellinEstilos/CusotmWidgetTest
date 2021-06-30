@@ -95,7 +95,7 @@
 
     draw() {
         'use strict';
-        //var d3 = window.d3;
+        var d3 = window.d3;
 
         var dataset1 = [
           { count: 10 },
