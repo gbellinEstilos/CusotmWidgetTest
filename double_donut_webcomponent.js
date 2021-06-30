@@ -20,7 +20,7 @@
       var shadow = this.shadowRoot;
       let LoadLibs = async function (host) {
         try {
-          await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
+          await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
         } catch (e) {
           console.log(JSON.stringify(e));
         } finally {
@@ -46,7 +46,7 @@
 /*       var shadow = this.shadowRoot;
       let LoadLibsAfterUpdate = async function (host) {
         try {
-          await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
+          await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
         } catch (e) {
           console.log(JSON.stringify(e));
         } finally {
