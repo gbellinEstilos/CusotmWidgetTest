@@ -45,14 +45,14 @@
           host.draw();
         }
       };
-      if (!(this._init || this._selectionEvent)) {
-        if (this._firstUpdate) {
-          LoadLibsAfterUpdate(this);
-          this._firstUpdate = false;
-        } else {
-          this.draw();
-        }
+
+      if (this._firstUpdate) {
+        LoadLibsAfterUpdate(this);
+        this._firstUpdate = false;
+      } else {
+        this.draw();
       }
+
     }
 
     //When the custom widget is removed from the canvas or the analytic application is closed
@@ -160,17 +160,17 @@
     }
 
     loadScript(src, shadowRoot) {
-      return new Promise(function(resolve, reject) {
-          let script = document.createElement('script');
-          script.src = src;
-          script.onload = () => {
-              console.log("Load: " + src);
-              resolve(script);
-          };
-          script.onerror = () => reject(new Error(`Script load error for ${src}`));
-          shadowRoot.appendChild(script);
+      return new Promise(function (resolve, reject) {
+        let script = document.createElement('script');
+        script.src = src;
+        script.onload = () => {
+          console.log("Load: " + src);
+          resolve(script);
+        };
+        script.onerror = () => reject(new Error(`Script load error for ${src}`));
+        shadowRoot.appendChild(script);
       });
-  }
+    }
 
 
   });
