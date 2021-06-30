@@ -1,7 +1,6 @@
 (function () {
   let tmpl = document.createElement('template');
-  tmpl.innerHTML = `
-        `;
+  tmpl.innerHTML = `<div id="chart"></div>`;
 
   customElements.define('com-sap-estilos-doubledonut', class HelloWorld extends HTMLElement {
 
@@ -10,10 +9,10 @@
       super();
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+      this._init = true;
       this._firstUpdate = true;
-      this._tagContainer;
-      //this._tagType = "h1";
-      //this._tagText = "Hello World";
+      this._firstResize = true;
+      this._selectionEvent = false;
     }
 
     //Fired when the widget is added to the html DOM of the page
@@ -21,7 +20,7 @@
       var shadow = this.shadowRoot;
       let LoadLibsAfterUpdate = async function (host) {
         try {
-          await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
+          await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
         } catch (e) {
           console.log(JSON.stringify(e));
         } finally {
@@ -52,7 +51,7 @@
       var shadow = this.shadowRoot;
       let LoadLibsAfterUpdate = async function (host) {
         try {
-          await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
+          await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
         } catch (e) {
           console.log(JSON.stringify(e));
         } finally {
@@ -94,8 +93,6 @@
     // End - Getters and Setters
 
     draw() {
-        'use strict';
-        var d3 = window.d3;
 
         var dataset1 = [
           { count: 10 },
