@@ -10,7 +10,7 @@
       super();
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-      this._firstUpdate = false;
+      this._firstUpdate = true;
       this._tagContainer;
       //this._tagType = "h1";
       //this._tagText = "Hello World";
