@@ -66,7 +66,7 @@
 
     draw() {
 
-/*       (function (d3) {
+       (function (d3) {
         'use strict';
 
         var dataset1 = [
@@ -132,7 +132,7 @@
             return color2(i);
           });
 
-      })(window.d3); */
+      })(window.d3); 
 
       /*          if (this._tagContainer){
                       this._tagContainer.parentNode.removeChild(this._tagContainer);
