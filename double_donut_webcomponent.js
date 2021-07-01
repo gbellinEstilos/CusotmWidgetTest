@@ -113,7 +113,7 @@
       //var width = 400;
       //var height = 400;
       var width = width.substring(0, width.length - 2);
-      var height = height.substring(0, height.length - 2);
+      var height = width.substring(0, width.length - 2);
 
       var donutWidth = width/5;
       var radius1 = Math.min(width, height) / 2;
