@@ -19,8 +19,8 @@
     connectedCallback() {
       var shadow = this.shadowRoot;
       var custelem = shadow.host;
-      this.$width = custelem.parentNode.parentNode.parentNode.style.width;
-      this.$height = custelem.parentNode.parentNode.parentNode.style.height;
+      this.$width = custelem.parentNode.parentNode.parentNode.style.width.substring(0, custelem.parentNode.parentNode.parentNode.style.width.length - 2);
+      this.$height = custelem.parentNode.parentNode.parentNode.style.height.substring(0, custelem.parentNode.parentNode.parentNode.style.height.length - 2);
       let LoadLibs = async function (host) {
         try {
           await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
@@ -75,8 +75,8 @@
     // Commented out by default
     
     onCustomWidgetResize(width, height){
-      this.$width = width + 'px';
-      this.$height = height  + 'px';
+      this.$width = width;
+      this.$height = height;
       this.draw(width, height);
     }
     
