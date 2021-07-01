@@ -18,13 +18,16 @@
     //Fired when the widget is added to the html DOM of the page
     connectedCallback() {
       var shadow = this.shadowRoot;
+      var custelem = shadow.host;
+      this.$width = custelem.parentNode.parentNode.parentNode.style.width;
+      this.$height = custelem.parentNode.parentNode.parentNode.style.height;
       let LoadLibs = async function (host) {
         try {
           await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
         } catch (e) {
           console.log(JSON.stringify(e));
         } finally {
-          host.draw();
+          host.draw(this.$width, this.$height);
         }
       };
       LoadLibs(this);
@@ -70,11 +73,13 @@
 
     //When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
     // Commented out by default
-    /*
-    onCustomWidgetResize(width, height){
     
+    onCustomWidgetResize(width, height){
+      this.$width = width + 'px';
+      this.$height = height + 'px';
+      this.draw(width, height);
     }
-    */
+    
 
     //Getters and Setters
     get widgetText() {
@@ -86,7 +91,7 @@
     }
     // End - Getters and Setters
 
-    draw() {
+    draw(width, height) {
 
       var dataset1 = [
         { count: 10 },
@@ -103,8 +108,8 @@
         { count: 45 }
       ];
 
-      var width = 400;
-      var height = 400;
+      //var width = 400;
+      //var height = 400;
       var donutWidth = 75;
       var radius1 = Math.min(width, height) / 2;
       var radius2 = radius1 - donutWidth;
