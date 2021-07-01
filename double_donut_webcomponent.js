@@ -121,7 +121,7 @@
         height = heightSize;
       }
 
-      var donutWidth = width / 6;
+      var donutWidth = Math.min(width, height) / 6;
       var radius1 = Math.min(width, height) / 2;
       var radius2 = radius1 - donutWidth;
 
