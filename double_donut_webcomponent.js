@@ -93,8 +93,8 @@
 
     draw(widthSize, heightSize) {
 
-      if (this.shadowRoot.querySelector('#chart').childElementCount !== 0 )
-        this.shadowRoot.querySelector('#chart').remove();
+      if (this.shadowRoot.querySelector('#chart').childElementCount !== 0)
+        d3.select(this.shadowRoot.querySelector('#chart')).selectAll("*").remove();
 
       var dataset1 = [
         { count: 10 },
@@ -115,7 +115,7 @@
 
       var width = 200;
       var height = 200;
-      
+
       if (Math.min(widthSize, heightSize) > 200) {
         width = widthSize;
         height = heightSize;
