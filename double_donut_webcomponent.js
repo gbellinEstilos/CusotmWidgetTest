@@ -27,7 +27,7 @@
         } catch (e) {
           console.log(JSON.stringify(e));
         } finally {
-          host.draw(this.$width, this.$height);
+          host.draw(host.$width, host.$height);
         }
       };
       LoadLibs(this);
