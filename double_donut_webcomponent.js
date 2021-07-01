@@ -92,7 +92,7 @@
     // End - Getters and Setters
 
     draw(widthSize, heightSize) {
-      
+
       if (this.shadowRoot.querySelector('#chart').childElementCount !== 0 )
         this.shadowRoot.querySelector('#chart').remove();
 
@@ -116,12 +116,12 @@
       var width = 200;
       var height = 200;
       
-      if (Math.min(width, height) >= 200) {
+      if (Math.min(width, height) > 200) {
         width = widthSize;
         height = heightSize;
       }
 
-      var donutWidth = width / 5;
+      var donutWidth = width / 6;
       var radius1 = Math.min(width, height) / 2;
       var radius2 = radius1 - donutWidth;
 
