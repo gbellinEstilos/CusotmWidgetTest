@@ -97,7 +97,8 @@
         { count: 10 },
         { count: 20 },
         { count: 30 },
-        { count: 40 }
+        { count: 20 },
+        { count: 20 }
       ];
 
       var dataset2 = [
@@ -105,12 +106,13 @@
         { count: 15 },
         { count: 25 },
         { count: 35 },
-        { count: 45 }
+        { count: 25 },
+        { count: 20 }
       ];
 
       //var width = 400;
       //var height = 400;
-      var donutWidth = 75;
+      var donutWidth = width/5;
       var radius1 = Math.min(width, height) / 2;
       var radius2 = radius1 - donutWidth;
 
