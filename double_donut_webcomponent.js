@@ -92,6 +92,9 @@
     // End - Getters and Setters
 
     draw(widthSize, heightSize) {
+      
+      if (this.shadowRoot.querySelector('#chart').childElementCount !== 0 )
+        this.shadowRoot.querySelector('#chart').remove();
 
       var dataset1 = [
         { count: 10 },
