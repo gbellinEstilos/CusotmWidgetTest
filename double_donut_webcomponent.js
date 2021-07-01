@@ -75,8 +75,8 @@
     // Commented out by default
     
     onCustomWidgetResize(width, height){
-      this.$width = width;
-      this.$height = height;
+      this.$width = width + 'px';
+      this.$height = height  + 'px';
       this.draw(width, height);
     }
     
