@@ -46,23 +46,23 @@
 
     //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
     onCustomWidgetAfterUpdate(oChangedProperties) {
-/*       var shadow = this.shadowRoot;
-      let LoadLibsAfterUpdate = async function (host) {
-        try {
-          await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
-        } catch (e) {
-          console.log(JSON.stringify(e));
-        } finally {
-          host.draw();
-        }
-      };
-
-      if (this._firstUpdate) {
-        LoadLibsAfterUpdate(this);
-        this._firstUpdate = false;
-      } else {
-        this.draw();
-      } */
+      /*       var shadow = this.shadowRoot;
+            let LoadLibsAfterUpdate = async function (host) {
+              try {
+                await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js", shadow);
+              } catch (e) {
+                console.log(JSON.stringify(e));
+              } finally {
+                host.draw();
+              }
+            };
+      
+            if (this._firstUpdate) {
+              LoadLibsAfterUpdate(this);
+              this._firstUpdate = false;
+            } else {
+              this.draw();
+            } */
     }
 
     //When the custom widget is removed from the canvas or the analytic application is closed
@@ -73,13 +73,13 @@
 
     //When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
     // Commented out by default
-    
-    onCustomWidgetResize(width, height){
+
+    onCustomWidgetResize(width, height) {
       this.$width = width;
       this.$height = height;
       this.draw(width, height);
     }
-    
+
 
     //Getters and Setters
     get widgetText() {
@@ -91,7 +91,7 @@
     }
     // End - Getters and Setters
 
-    draw(width, height) {
+    draw(widthSize, heightSize) {
 
       var dataset1 = [
         { count: 10 },
@@ -110,11 +110,15 @@
         { count: 20 }
       ];
 
-      //var width = 400;
-      //var height = 400;
-      var width = width;
-      var height = width;
-      var donutWidth = width/5;
+      var width = 200;
+      var height = 200;
+      
+      if (Math.min(width, height) >= 200) {
+        width = widthSize;
+        height = heightSize;
+      }
+
+      var donutWidth = width / 5;
       var radius1 = Math.min(width, height) / 2;
       var radius2 = radius1 - donutWidth;
 
@@ -183,7 +187,7 @@
       });
     }
 
-    async setDataSource(source) {}
+    async setDataSource(source) { }
 
   });
 
