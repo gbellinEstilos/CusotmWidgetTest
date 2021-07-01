@@ -116,7 +116,7 @@
       var width = 200;
       var height = 200;
       
-      if (Math.min(width, height) > 200) {
+      if (Math.min(widthSize, heightSize) > 200) {
         width = widthSize;
         height = heightSize;
       }
