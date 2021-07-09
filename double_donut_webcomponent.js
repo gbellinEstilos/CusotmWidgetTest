@@ -103,7 +103,7 @@
       if (this.shadowRoot.querySelector('#chart').childElementCount !== 0)
         d3.select(this.shadowRoot.querySelector('#chart')).selectAll("*").remove();
       
-      if (data == {} ) {
+      if (data == {} || data == undefined) {
         dataset1 = [
           { count: 10 },
           { count: 20 },
