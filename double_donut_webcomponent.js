@@ -13,6 +13,7 @@
       this._firstUpdate = true;
       this._firstResize = true;
       this._selectionEvent = false;
+      this._data = {};
     }
 
     //Fired when the widget is added to the html DOM of the page
@@ -80,6 +81,9 @@
       this.draw(width, height);
     }
 
+    onInitialization(data) {
+      this.data=data;
+    }
 
     //Getters and Setters
     get widgetText() {
@@ -91,27 +95,37 @@
     }
     // End - Getters and Setters
 
-    draw(widthSize, heightSize) {
+    draw(widthSize, heightSize, data) {
+
+      var dataset1;
+      var dataset2;
 
       if (this.shadowRoot.querySelector('#chart').childElementCount !== 0)
         d3.select(this.shadowRoot.querySelector('#chart')).selectAll("*").remove();
-
-      var dataset1 = [
-        { count: 10 },
-        { count: 20 },
-        { count: 30 },
-        { count: 20 },
-        { count: 20 }
-      ];
-
-      var dataset2 = [
-        { count: 5 },
-        { count: 15 },
-        { count: 25 },
-        { count: 35 },
-        { count: 25 },
-        { count: 20 }
-      ];
+      
+      if (data == {} ) {
+        dataset1 = [
+          { count: 10 },
+          { count: 20 },
+          { count: 30 },
+          { count: 20 },
+          { count: 20 }
+        ];
+        
+  
+        dataset2 = [
+          { count: 5 },
+          { count: 15 },
+          { count: 25 },
+          { count: 35 },
+          { count: 25 },
+          { count: 20 }
+        ];
+      } 
+      else {
+          dataset1=data;
+          dataset2=data;
+      }     
 
       var width = 200;
       var height = 200;
@@ -190,7 +204,7 @@
       });
     }
 
-    async setDataSource(source) { }
+    //async setDataSource(source) { }
 
   });
 
