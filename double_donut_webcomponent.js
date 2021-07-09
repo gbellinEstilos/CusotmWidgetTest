@@ -100,6 +100,10 @@
     }
     // End - Getters and Setters
 
+    onClick () {
+      this.setDataChart();
+    }
+
     draw(widthSize, heightSize, data) {
 
       var dataset1;
