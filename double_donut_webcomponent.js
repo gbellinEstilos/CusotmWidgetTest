@@ -87,7 +87,9 @@
     }
 
     setDataChart(data) {
-      this.data=data;
+      this._data=data;
+      console.log(data)
+      this.draw(this.$width, this.$height, this._data);
     }
 
     //Getters and Setters
