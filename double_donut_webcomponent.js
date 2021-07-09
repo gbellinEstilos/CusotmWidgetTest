@@ -12,8 +12,13 @@
       this._init = true;
       this._firstUpdate = true;
       this._firstResize = true;
-      this._selectionEvent = false;
       this._data = {};
+
+      //Adding event handler for click events
+      this.addEventListener("onClick", event => {
+        var event = new Event("onClick");
+        this.dispatchEvent(event);
+      });
     }
 
     //Fired when the widget is added to the html DOM of the page
@@ -28,7 +33,7 @@
         } catch (e) {
           console.log(JSON.stringify(e));
         } finally {
-          host.draw(host.$width, host.$height);
+          host.draw(host.$width, host.$height, host._data);
         }
       };
       LoadLibs(this);
@@ -81,7 +86,7 @@
       this.draw(width, height);
     }
 
-    onInitialization(data) {
+    setDataChart(data) {
       this.data=data;
     }
 
