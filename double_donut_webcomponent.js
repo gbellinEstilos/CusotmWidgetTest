@@ -13,9 +13,9 @@
       this._firstUpdate = true;
       this._firstResize = true;
       this._data = {};
-
+      
       //Adding event handler for click events
-      this.addEventListener("onClick", event => {
+      this.addEventListener("click", event => {
         var event = new Event("onClick");
         this.dispatchEvent(event);
       });
