@@ -102,10 +102,6 @@
     }
     // End - Getters and Setters
 
-    onClick () {
-      this.setDataChart();
-    }
-
     draw(widthSize, heightSize, data) {
 
       var dataset1;
@@ -114,7 +110,7 @@
       if (this.shadowRoot.querySelector('#chart').childElementCount !== 0)
         d3.select(this.shadowRoot.querySelector('#chart')).selectAll("*").remove();
       
-      if (data || Object.keys(data).length === 0) {
+      if (!data || Object.keys(data).length === 0) {
         dataset1 = [
           { count: 10 },
           { count: 20 },
